@@ -164,67 +164,6 @@ export function ShoppingCart({
   const [cartItems, setCartItems] = useState<CartItem[]>(initialItems.length > 0 ? initialItems : mockCartItems);
   const [savedForLater, setSavedForLater] = useState<CartItem[]>([]);
   const [expandedVendors, setExpandedVendors] = useState<Record<string, boolean>>({});
-    {
-      id: '1',
-      productId: 'prod-1',
-      name: 'iPhone 15 Pro Max 256GB',
-      nameAr: 'آيفون 15 برو ماكس 256 جيجا',
-      image: '/api/placeholder/100/100',
-      price: 450.500,
-      quantity: 1,
-      maxQuantity: 5,
-      vendor: {
-        id: 'vendor-1',
-        name: 'TechStore Bahrain',
-        nameAr: 'متجر التكنولوجيا البحرين',
-        rating: 4.8,
-        freeShippingThreshold: 100.000
-      },
-      attributes: {
-        color: 'Natural Titanium',
-        colorAr: 'تيتانيوم طبيعي'
-      }
-    },
-    {
-      id: '2',
-      productId: 'prod-2',
-      name: 'AirPods Pro (2nd Gen)',
-      nameAr: 'إيربودز برو الجيل الثاني',
-      image: '/api/placeholder/100/100',
-      price: 85.750,
-      quantity: 2,
-      maxQuantity: 10,
-      vendor: {
-        id: 'vendor-1',
-        name: 'TechStore Bahrain',
-        nameAr: 'متجر التكنولوجيا البحرين',
-        rating: 4.8,
-        freeShippingThreshold: 100.000
-      }
-    },
-    {
-      id: '3',
-      productId: 'prod-3',
-      name: 'Premium Evening Dress',
-      nameAr: 'فستان سهرة راقي',
-      image: '/api/placeholder/100/100',
-      price: 95.500,
-      quantity: 1,
-      maxQuantity: 3,
-      vendor: {
-        id: 'vendor-2',
-        name: 'Fashion Boutique',
-        nameAr: 'بوتيك الأزياء',
-        rating: 4.6,
-        freeShippingThreshold: 75.000
-      },
-      attributes: {
-        size: 'M',
-        color: 'Navy Blue',
-        colorAr: 'أزرق كحلي'
-      }
-    }
-  ];
 
   // Group cart items by vendor
   const vendorGroups: CartVendorGroup[] = cartItems.reduce((groups, item) => {

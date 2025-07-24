@@ -1,0 +1,197 @@
+{
+  "version": 2,
+  "name": "tendzd-bahrain-multivendor",
+  "alias": ["tendzd.com", "www.tendzd.com", "ar.tendzd.com"],
+  
+  "regions": ["dxb1"],
+  
+  "env": {
+    "NODE_ENV": "production",
+    "NEXT_TELEMETRY_DISABLED": "1",
+    "DATABASE_URL": "@database-url-production",
+    "REDIS_URL": "@redis-url-production",
+    "NEXTAUTH_SECRET": "@nextauth-secret",
+    "NEXTAUTH_URL": "@nextauth-url",
+    "BENEFIT_PAY_API_KEY": "@benefit-pay-api-key",
+    "BENEFIT_PAY_SECRET": "@benefit-pay-secret",
+    "APPLE_PAY_MERCHANT_ID": "@apple-pay-merchant-id",
+    "APPLE_PAY_CERTIFICATE": "@apple-pay-certificate",
+    "SENDGRID_API_KEY": "@sendgrid-api-key",
+    "CLOUDFLARE_R2_ACCESS_KEY": "@cloudflare-r2-access-key",
+    "CLOUDFLARE_R2_SECRET_KEY": "@cloudflare-r2-secret-key",
+    "ANALYTICS_ID": "@analytics-id",
+    "SENTRY_DSN": "@sentry-dsn"
+  },
+  
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "DATABASE_URL": "@database-url-build",
+      "SKIP_ENV_VALIDATION": "1"
+    }
+  },
+  
+  "functions": {
+    "app/api/webhook/benefit-pay/route.ts": {
+      "maxDuration": 30
+    },
+    "app/api/analytics/events/route.ts": {
+      "maxDuration": 10
+    },
+    "app/api/search/products/route.ts": {
+      "maxDuration": 10
+    }
+  },
+  
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(self)"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://tendzd.com"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization, X-Requested-With"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/icons/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  
+  "redirects": [
+    {
+      "source": "/ar",
+      "destination": "/?locale=ar",
+      "permanent": false
+    },
+    {
+      "source": "/en",
+      "destination": "/?locale=en",
+      "permanent": false
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin/dashboard",
+      "permanent": true
+    },
+    {
+      "source": "/vendor",
+      "destination": "/vendor/dashboard",
+      "permanent": true
+    }
+  ],
+  
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/api/robots"
+    },
+    {
+      "source": "/health",
+      "destination": "/api/health"
+    }
+  ],
+  
+  "crons": [
+    {
+      "path": "/api/cron/cleanup-sessions",
+      "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/cron/update-analytics",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/vendor-payouts",
+      "schedule": "0 0 1 * *"
+    },
+    {
+      "path": "/api/cron/backup-data",
+      "schedule": "0 3 * * 0"
+    }
+  ],
+  
+  "github": {
+    "autoJobCancelation": false
+  },
+  
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  
+  "framework": "nextjs"
+}

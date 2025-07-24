@@ -338,7 +338,7 @@ export function Header({
             {/* Notifications */}
             {user && (
               <Tooltip label={t('notifications')}>
-                <Indicator count={notificationCount} size={16} disabled={notificationCount === 0}>
+                <Indicator label={notificationCount} size={16} disabled={notificationCount === 0}>
                   <ActionIcon
                     variant="subtle"
                     size="lg"
@@ -353,7 +353,7 @@ export function Header({
 
             {/* Wishlist */}
             <Tooltip label={t('wishlist')}>
-              <Indicator count={wishlistCount} size={16} disabled={wishlistCount === 0}>
+              <Indicator label={wishlistCount} size={16} disabled={wishlistCount === 0}>
                 <ActionIcon
                   variant="subtle"
                   size="lg"

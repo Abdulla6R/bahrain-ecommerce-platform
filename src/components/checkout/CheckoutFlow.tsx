@@ -354,7 +354,6 @@ export function CheckoutFlow({ locale, cartItems = [], onComplete }: CheckoutFlo
         {/* Progress Stepper */}
         <Stepper 
           active={currentStep} 
-          breakpoint="sm"
           color="orange"
           dir={isRTL ? 'rtl' : 'ltr'}
         >

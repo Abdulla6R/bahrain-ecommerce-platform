@@ -87,23 +87,21 @@ const mockCartItems: CartItem[] = [
     nameAr: 'آيفون 15 برو ماكس 256 جيجا',
     image: '/api/placeholder/100/100',
     price: 450.500,
-    originalPrice: 525.000,
     quantity: 1,
+    maxQuantity: 5,
     vendor: {
       id: 'vendor-1',
       name: 'TechStore Bahrain',
       nameAr: 'متجر التقنية البحرين',
+      rating: 4.8,
       logo: '/api/placeholder/40/40',
+      freeShippingThreshold: 100.000,
       verified: true
     },
     attributes: {
       color: 'Space Black',
-      colorAr: 'أسود فضائي',
-      storage: '256GB'
-    },
-    inStock: true,
-    shippingTime: '1-2 days',
-    shippingTimeAr: '1-2 أيام'
+      colorAr: 'أسود فضائي'
+    }
   },
   {
     id: '2', 
@@ -112,22 +110,21 @@ const mockCartItems: CartItem[] = [
     nameAr: 'سماعات سامسونج جالاكسي برو',
     image: '/api/placeholder/100/100',
     price: 89.750,
-    originalPrice: 120.000,
     quantity: 2,
+    maxQuantity: 10,
     vendor: {
       id: 'vendor-2',
       name: 'Audio Kingdom',
       nameAr: 'مملكة الصوتيات',
+      rating: 4.6,
       logo: '/api/placeholder/40/40',
+      freeShippingThreshold: 75.000,
       verified: true
     },
     attributes: {
       color: 'Phantom Black',
       colorAr: 'أسود شبحي'
-    },
-    inStock: true,
-    shippingTime: '2-3 days',  
-    shippingTimeAr: '2-3 أيام'
+    }
   },
   {
     id: '3',
@@ -137,21 +134,21 @@ const mockCartItems: CartItem[] = [
     image: '/api/placeholder/100/100',
     price: 189.000,
     quantity: 1,
+    maxQuantity: 3,
     vendor: {
       id: 'vendor-1',
       name: 'TechStore Bahrain', 
       nameAr: 'متجر التقنية البحرين',
+      rating: 4.8,
       logo: '/api/placeholder/40/40',
+      freeShippingThreshold: 100.000,
       verified: true
     },
     attributes: {
       size: '45mm',
       color: 'Midnight',
       colorAr: 'منتصف الليل'
-    },
-    inStock: false,
-    shippingTime: '5-7 days',
-    shippingTimeAr: '5-7 أيام'
+    }
   }
 ];
 

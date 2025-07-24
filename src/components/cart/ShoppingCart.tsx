@@ -52,6 +52,7 @@ interface CartItem {
     rating: number;
     logo?: string;
     freeShippingThreshold: number;
+    verified?: boolean;
   };
   attributes?: {
     size?: string;

@@ -97,6 +97,8 @@ export function Header({
     key: 'recent-searches',
     defaultValue: [],
   });
+  
+  const isLoggedIn = !!user;
 
   // Calculate cart totals
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);

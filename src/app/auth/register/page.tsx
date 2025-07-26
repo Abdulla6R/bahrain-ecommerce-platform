@@ -34,10 +34,6 @@ import {
   IconUserPlus
 } from '@tabler/icons-react';
 
-interface RegisterPageProps {
-  searchParams: Promise<{ locale?: string }>;
-}
-
 interface FormData {
   firstName: string;
   lastName: string;
@@ -106,10 +102,9 @@ const bahrainLocations = {
   }
 };
 
-export default async function RegisterPage({ searchParams }: RegisterPageProps) {
-  const resolvedSearchParams = await searchParams;
-  const locale = resolvedSearchParams.locale || 'en';
-  const isRTL = locale === 'ar';
+export default function RegisterPage() {
+  const locale = 'en';
+  const isRTL = false;
   
   const [formData, setFormData] = useState<FormData>({
     firstName: '',

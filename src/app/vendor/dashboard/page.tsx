@@ -54,9 +54,6 @@ import {
   IconShield
 } from '@tabler/icons-react';
 
-interface VendorDashboardProps {
-  searchParams: Promise<{ locale?: string }>;
-}
 
 interface Product {
   id: string;
@@ -80,10 +77,9 @@ interface Order {
   commission: number;
 }
 
-export default async function VendorDashboard({ searchParams }: VendorDashboardProps) {
-  const resolvedSearchParams = await searchParams;
-  const locale = resolvedSearchParams.locale || 'en';
-  const isRTL = locale === 'ar';
+export default function VendorDashboard() {
+  const locale = 'en';
+  const isRTL = false;
   
   const [activeTab, setActiveTab] = useState('overview');
   const [showProductModal, setShowProductModal] = useState(false);

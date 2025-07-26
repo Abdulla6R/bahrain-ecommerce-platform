@@ -6,20 +6,22 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  output: 'export',
+  trailingSlash: true,
   
-  // Basic image configuration for Netlify
+  // Static export configuration
   images: {
     unoptimized: true,
   },
 
   // Environment variables
   env: {
-    VAT_RATE: process.env.VAT_RATE || '0.10',
-    DEFAULT_CURRENCY: process.env.DEFAULT_CURRENCY || 'BHD',
-    TIMEZONE: process.env.TIMEZONE || 'Asia/Bahrain',
+    VAT_RATE: '0.10',
+    DEFAULT_CURRENCY: 'BHD',
+    TIMEZONE: 'Asia/Bahrain',
   },
   
-  // Netlify optimizations
+  // Optimizations
   poweredByHeader: false,
   compress: true,
 };

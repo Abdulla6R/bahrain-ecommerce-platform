@@ -31,14 +31,10 @@ import { BenefitPayButton } from '@/components/payments/BenefitPayButton';
 import { ApplePayButton } from '@/components/payments/ApplePayButton';
 import { BankTransferCard } from '@/components/payments/BankTransferCard';
 
-interface CheckoutPageProps {
-  searchParams: Promise<{ locale?: string }>;
-}
 
-export default async function CheckoutPage({ searchParams }: CheckoutPageProps) {
-  const resolvedSearchParams = await searchParams;
-  const locale = resolvedSearchParams.locale || 'en';
-  const isRTL = locale === 'ar';
+export default function CheckoutPage() {
+  const locale = 'en';
+  const isRTL = false;
   
   const [currentStep, setCurrentStep] = useState(0);
   const [checkoutData, setCheckoutData] = useState<any>({});

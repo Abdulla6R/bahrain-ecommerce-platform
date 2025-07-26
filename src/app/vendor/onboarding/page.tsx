@@ -47,9 +47,6 @@ import {
   IconUserPlus
 } from '@tabler/icons-react';
 
-interface VendorOnboardingProps {
-  searchParams: Promise<{ locale?: string }>;
-}
 
 interface FormData {
   // Personal Information
@@ -160,10 +157,9 @@ const bahrainiBanks = [
   { value: 'ila', label: 'ila Digital Bank', labelAr: 'بنك إيلا الرقمي' }
 ];
 
-export default async function VendorOnboarding({ searchParams }: VendorOnboardingProps) {
-  const resolvedSearchParams = await searchParams;
-  const locale = resolvedSearchParams.locale || 'en';
-  const isRTL = locale === 'ar';
+export default function VendorOnboarding() {
+  const locale = 'en';
+  const isRTL = false;
   
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<FormData>({

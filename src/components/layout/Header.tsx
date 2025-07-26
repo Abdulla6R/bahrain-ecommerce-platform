@@ -28,7 +28,7 @@ import {
   Select,
 } from '@mantine/core';
 import { useDisclosure, useHotkeys, useLocalStorage } from '@mantine/hooks';
-import { spotlight, SpotlightActionData } from '@mantine/spotlight';
+import { spotlight, Spotlight, SpotlightActionData } from '@mantine/spotlight';
 import {
   IconSearch,
   IconShoppingCart,

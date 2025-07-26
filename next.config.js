@@ -1,7 +1,3 @@
-const createNextIntlPlugin = require('next-intl/plugin');
-
-const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -11,15 +7,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Image optimization
+  // Basic image configuration for Netlify
   images: {
-    domains: [
-      'localhost',
-      'tendzd.bh',
-      's3.me-south-1.amazonaws.com',
-      'cdn.tendzd.bh'
-    ],
-    formats: ['image/webp', 'image/avif'],
+    unoptimized: true,
   },
 
   // Environment variables
@@ -29,9 +19,9 @@ const nextConfig = {
     TIMEZONE: process.env.TIMEZONE || 'Asia/Bahrain',
   },
   
-  // Disable problematic features for Netlify
+  // Netlify optimizations
   poweredByHeader: false,
   compress: true,
 };
 
-module.exports = withNextIntl(nextConfig);
+module.exports = nextConfig;

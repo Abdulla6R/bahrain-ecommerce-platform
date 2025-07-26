@@ -1,18 +1,8 @@
 // Complete database integration for Bahrain multi-vendor e-commerce platform
 // Includes PostgreSQL schema, Redis integration, and PDPL compliance
 
-import { PrismaClient } from '@prisma/client';
+import { prisma } from './prisma';
 import { cache, type RedisCache } from './performance';
-
-// Initialize Prisma client with connection pooling
-const prisma = new PrismaClient({
-  log: ['query', 'info', 'warn', 'error'],
-  datasources: {
-    db: {
-      url: process.env.DATABASE_URL
-    }
-  }
-});
 
 // Database models and types
 export interface User {

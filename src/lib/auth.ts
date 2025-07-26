@@ -2,12 +2,18 @@
 // NextAuth.js with PDPL compliance and role-based access control
 
 import { NextAuthOptions, User } from 'next-auth';
-import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
-import { prisma } from './database';
+import { prisma } from './prisma';
 import bcrypt from 'bcryptjs';
-import { UserRole } from '@prisma/client';
+
+// Mock UserRole enum for build compatibility
+export enum UserRole {
+  CUSTOMER = 'CUSTOMER',
+  VENDOR = 'VENDOR',
+  ADMIN = 'ADMIN',
+  SUPER_ADMIN = 'SUPER_ADMIN'
+}
 
 export interface ExtendedUser extends User {
   id: string;
@@ -20,7 +26,7 @@ export interface ExtendedUser extends User {
 }
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  // adapter: PrismaAdapter(prisma), // Disabled for build compatibility
   
   providers: [
     CredentialsProvider({

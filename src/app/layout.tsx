@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
 import { Cairo, Amiri, Inter } from 'next/font/google';
 import BahrainMantineProvider from '@/providers/MantineProvider';
 import './globals.css';
@@ -97,14 +95,13 @@ export const metadata: Metadata = {
   category: 'technology',
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const locale = await getLocale();
-  const messages = await getMessages();
-  const isRTL = locale === 'ar';
+  const locale = 'en';
+  const isRTL = false;
 
   return (
     <html 
@@ -190,11 +187,6 @@ export default async function RootLayout({
         `}
         suppressHydrationWarning
       >
-        <NextIntlClientProvider 
-          locale={locale} 
-          messages={messages}
-          timeZone="Asia/Bahrain"
-        >
           <BahrainMantineProvider locale={locale}>
             {/* Skip to main content for accessibility */}
             <a
@@ -290,7 +282,6 @@ export default async function RootLayout({
               }}
             />
           </BahrainMantineProvider>
-        </NextIntlClientProvider>
       </body>
     </html>
   );

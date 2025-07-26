@@ -9,8 +9,8 @@ const intlMiddleware = createIntlMiddleware({
   // Used when no locale matches
   defaultLocale: 'ar',
   
-  // Always redirect to locale prefix
-  localePrefix: 'always'
+  // Use locale prefix only when needed
+  localePrefix: 'as-needed'
 });
 
 export default function middleware(request: NextRequest) {
@@ -20,5 +20,5 @@ export default function middleware(request: NextRequest) {
 
 export const config = {
   // Match only internationalized pathnames
-  matcher: ['/', '/(ar|en)/:path*']
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
 };

@@ -25,11 +25,40 @@ import {
   IconInfoCircle
 } from '@tabler/icons-react';
 
-import { ShoppingCart } from '@/components/cart/ShoppingCart';
-import { CheckoutFlow } from '@/components/checkout/CheckoutFlow';
-import { BenefitPayButton } from '@/components/payments/BenefitPayButton';
-import { ApplePayButton } from '@/components/payments/ApplePayButton';
-import { BankTransferCard } from '@/components/payments/BankTransferCard';
+// Simple placeholder components for demo
+const ShoppingCart = ({ items }: any) => (
+  <Card withBorder>
+    <Text fw={500} mb="md">Shopping Cart</Text>
+    <Text size="sm" c="dimmed">3 items in cart - Total: 45.750 BHD</Text>
+  </Card>
+);
+
+const CheckoutFlow = ({ onComplete }: any) => (
+  <Card withBorder>
+    <Text fw={500} mb="md">Checkout Process</Text>
+    <Button onClick={() => onComplete?.()}>Complete Order</Button>
+  </Card>
+);
+
+const BenefitPayButton = ({ amount, onPayment }: any) => (
+  <Button fullWidth size="lg" color="blue" onClick={() => onPayment?.()}>
+    Pay {amount} BHD with Benefit Pay
+  </Button>
+);
+
+const ApplePayButton = ({ amount, onPayment }: any) => (
+  <Button fullWidth size="lg" color="gray" onClick={() => onPayment?.()}>
+    Pay {amount} BHD with Apple Pay
+  </Button>
+);
+
+const BankTransferCard = ({ onTransfer }: any) => (
+  <Card withBorder>
+    <Text fw={500} mb="sm">Bank Transfer</Text>
+    <Text size="sm" c="dimmed" mb="md">Transfer to: Bank Account Details</Text>
+    <Button onClick={() => onTransfer?.()}>Confirm Transfer</Button>
+  </Card>
+);
 
 
 export default function CheckoutPage() {

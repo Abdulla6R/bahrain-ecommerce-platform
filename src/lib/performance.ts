@@ -286,7 +286,6 @@ export const dynamicImports = {
   // Lazy load utility libraries
   dateUtils: () => import('date-fns'),
   chartLibrary: () => import('recharts'),
-  imageEditor: () => import('fabric'),
   
   // Lazy load by route
   vendorDashboard: () => import('../app/vendor/dashboard/page'),

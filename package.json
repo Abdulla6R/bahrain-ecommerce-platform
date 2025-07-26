@@ -29,7 +29,8 @@
     "db:reset": "prisma migrate reset",
     "clean": "rm -rf .next out dist coverage test-results",
     "audit:security": "npm audit --audit-level=moderate",
-    "performance:audit": "lighthouse http://localhost:3000 --output=html --output-path=./reports/lighthouse.html"
+    "performance:audit": "lighthouse http://localhost:3000 --output=html --output-path=./reports/lighthouse.html",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

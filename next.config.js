@@ -147,7 +147,7 @@ const nextConfig = {
   },
 
   // Output configuration for deployment
-  output: 'standalone',
+  // output: 'standalone', // Disabled for Netlify compatibility
   
   // Compression for better performance in Middle East
   compress: true,
